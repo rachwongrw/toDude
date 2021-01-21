@@ -21,15 +21,16 @@ class ItemListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+      return 5 // items.count
     }
 
   
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath)
+        let index = indexPath.row
         // Configure the cell...
-
+        cell.textLabel?.text = "Item #"
+        cell.accessoryType = index % 2 == 0 ? .checkmark : .none
         return cell
     }
 

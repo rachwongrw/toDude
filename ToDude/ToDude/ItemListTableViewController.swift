@@ -66,6 +66,13 @@ class ItemListTableViewController: UITableViewController {
         return cell
     }
   
+  // ----- TOGGLE COMPLETED -----
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    items[indexPath.row].completed = !items[indexPath.row].completed
+    saveItems()
+  }
+  
+  // ------ CREATE ------
   func saveItems() {
     do {
       try context.save()
@@ -75,6 +82,7 @@ class ItemListTableViewController: UITableViewController {
     tableView.reloadData()
   }
   
+  // ------ READ ------
   func loadItems() {
     let request: NSFetchRequest<Item> = Item.fetchRequest()
     

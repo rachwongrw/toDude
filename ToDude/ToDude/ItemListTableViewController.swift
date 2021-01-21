@@ -7,8 +7,10 @@
 
 import UIKit
 import CoreData
+import SwipeCellKit
 
-class ItemListTableViewController: UITableViewController {
+class ItemListTableViewController: UITableViewController, SwipeTableViewCellDelegate {
+  
   let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
   var items = [Item]()
   
@@ -57,16 +59,33 @@ class ItemListTableViewController: UITableViewController {
 
   
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath)
-        
-        // Configure the cell...
-        let item = items[indexPath.row]
-        cell.textLabel?.text = item.title
-        cell.accessoryType = item.completed ? .checkmark : .none
-        return cell
+      let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! SwipeTableViewCell
+      cell.delegate = self
+      // Configure the cell...
+      let item = items[indexPath.row]
+      cell.textLabel?.text = item.title
+      cell.accessoryType = item.completed ? .checkmark : .none
+      return cell
     }
   
-  // ----- TOGGLE COMPLETED -----
+  // ------ DELETE ------
+  func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+    guard orientation  == .right else {
+      return nil
+    }
+    
+    let deleteAction = SwipeAction(style: .destructive, title: "Delete") { (_, indexPath) in
+      self.context.delete(self.items[indexPath.row]) // delete from DB
+      self.items.remove(at: indexPath.row) // remove from array
+      self.saveItems() // update and save to DB
+    }
+    // add delete img to action
+    deleteAction.image = UIImage(named: "trash")
+    
+    return [deleteAction] // the array indicates that you can have multiple (optional) actions on the swipe action
+  }
+  
+  // ----- UPDATE (TOGGLE COMPLETED) -----
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     items[indexPath.row].completed = !items[indexPath.row].completed
     saveItems()
@@ -93,4 +112,6 @@ class ItemListTableViewController: UITableViewController {
     }
     tableView.reloadData()
   }
+  
+ 
 }

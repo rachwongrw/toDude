@@ -76,6 +76,13 @@ class ItemListTableViewController: UITableViewController {
   }
   
   func loadItems() {
-    let request = NSFetchRequest<Item>
+    let request: NSFetchRequest<Item> = Item.fetchRequest()
+    
+    do {
+      items = try context.fetch(request)
+    } catch {
+      print("Error fetching items: \(error)") // you already have access in the catch, don't need to declare it
+    }
+    tableView.reloadData()
   }
 }

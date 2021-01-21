@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 import SwipeCellKit
 
-class ItemListTableViewController: UITableViewController, SwipeTableViewCellDelegate {
+class ItemListTableViewController: UITableViewController {
   
   let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
   var items = [Item]()
@@ -46,45 +46,17 @@ class ItemListTableViewController: UITableViewController, SwipeTableViewCellDele
   }
   
   override func viewDidLoad() {
-        super.viewDidLoad()
-      loadItems()
-    }
+    super.viewDidLoad()
+    loadItems(search: nil)
+    tableView.rowHeight = 85.0
+  }
 
     // MARK: - Table view data source
 
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return items.count
-    }
-
-  
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! SwipeTableViewCell
-      cell.delegate = self
-      // Configure the cell...
-      let item = items[indexPath.row]
-      cell.textLabel?.text = item.title
-      cell.accessoryType = item.completed ? .checkmark : .none
-      return cell
-    }
-  
-  // ------ DELETE ------
-  func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-    guard orientation  == .right else {
-      return nil
-    }
-    
-    let deleteAction = SwipeAction(style: .destructive, title: "Delete") { (_, indexPath) in
-      self.context.delete(self.items[indexPath.row]) // delete from DB
-      self.items.remove(at: indexPath.row) // remove from array
-      self.saveItems() // update and save to DB
-    }
-    // add delete img to action
-    deleteAction.image = UIImage(named: "trash")
-    
-    return [deleteAction] // the array indicates that you can have multiple (optional) actions on the swipe action
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return items.count
   }
-  
+
   // ----- UPDATE (TOGGLE COMPLETED) -----
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     items[indexPath.row].completed = !items[indexPath.row].completed
@@ -92,6 +64,7 @@ class ItemListTableViewController: UITableViewController, SwipeTableViewCellDele
   }
   
   // ------ CREATE ------
+  // MARK: - Helper Functions
   func saveItems() {
     do {
       try context.save()
@@ -102,8 +75,15 @@ class ItemListTableViewController: UITableViewController, SwipeTableViewCellDele
   }
   
   // ------ READ ------
-  func loadItems() {
+  func loadItems(search: String?) {
     let request: NSFetchRequest<Item> = Item.fetchRequest()
+    if let searchText = search {
+      let predicate = NSPredicate(format: "title CONTAINS[c] %@", searchText)
+      request.predicate = predicate
+      let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
+      request.sortDescriptors = [sortDescriptor]
+    }
+ 
     
     do {
       items = try context.fetch(request)
@@ -114,4 +94,14 @@ class ItemListTableViewController: UITableViewController, SwipeTableViewCellDele
   }
   
  
+}
+
+extension ItemListTableViewController: UISearchBarDelegate {
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    if searchText.count > 0 {
+      loadItems(search: searchText)
+    } else if searchText.count == 0 {
+      loadItems(search: nil)
+    }
+  }
 }

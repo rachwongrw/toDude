@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,7 @@
 		F47A625125B9EEE500ED2B68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F47A625025B9EEE500ED2B68 /* Assets.xcassets */; };
 		F47A625425B9EEE500ED2B68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F47A625225B9EEE500ED2B68 /* LaunchScreen.storyboard */; };
 		F47A625E25B9F0C300ED2B68 /* ItemListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47A625D25B9F0C300ED2B68 /* ItemListTableViewController.swift */; };
+		F48E14B325BA34AE0045C4FE /* ItemListExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E14B225BA34AE0045C4FE /* ItemListExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		F47A625325B9EEE500ED2B68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F47A625525B9EEE500ED2B68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F47A625D25B9F0C300ED2B68 /* ItemListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListTableViewController.swift; sourceTree = "<group>"; };
+		F48E14B225BA34AE0045C4FE /* ItemListExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,6 @@
 				2614417542C8A9BEDBDCC446 /* Pods-ToDude.debug.xcconfig */,
 				CEDDA85302B53265ECD62803 /* Pods-ToDude.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -91,6 +92,7 @@
 				F47A625525B9EEE500ED2B68 /* Info.plist */,
 				F47A624D25B9EEE300ED2B68 /* ToDude.xcdatamodeld */,
 				F47A625D25B9F0C300ED2B68 /* ItemListTableViewController.swift */,
+				F48E14B225BA34AE0045C4FE /* ItemListExtension.swift */,
 			);
 			path = ToDude;
 			sourceTree = "<group>";
@@ -211,6 +213,7 @@
 			files = (
 				F47A624F25B9EEE300ED2B68 /* ToDude.xcdatamodeld in Sources */,
 				F47A624525B9EEE300ED2B68 /* AppDelegate.swift in Sources */,
+				F48E14B325BA34AE0045C4FE /* ItemListExtension.swift in Sources */,
 				F47A625E25B9F0C300ED2B68 /* ItemListTableViewController.swift in Sources */,
 				F47A624725B9EEE300ED2B68 /* SceneDelegate.swift in Sources */,
 			);

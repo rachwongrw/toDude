@@ -9,23 +9,23 @@
 /* Begin PBXBuildFile section */
 		F47A624525B9EEE300ED2B68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47A624425B9EEE300ED2B68 /* AppDelegate.swift */; };
 		F47A624725B9EEE300ED2B68 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47A624625B9EEE300ED2B68 /* SceneDelegate.swift */; };
-		F47A624925B9EEE300ED2B68 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47A624825B9EEE300ED2B68 /* ViewController.swift */; };
 		F47A624C25B9EEE300ED2B68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F47A624A25B9EEE300ED2B68 /* Main.storyboard */; };
 		F47A624F25B9EEE300ED2B68 /* ToDude.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F47A624D25B9EEE300ED2B68 /* ToDude.xcdatamodeld */; };
 		F47A625125B9EEE500ED2B68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F47A625025B9EEE500ED2B68 /* Assets.xcassets */; };
 		F47A625425B9EEE500ED2B68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F47A625225B9EEE500ED2B68 /* LaunchScreen.storyboard */; };
+		F47A625E25B9F0C300ED2B68 /* ItemListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47A625D25B9F0C300ED2B68 /* ItemListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F47A624125B9EEE300ED2B68 /* ToDude.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDude.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47A624425B9EEE300ED2B68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F47A624625B9EEE300ED2B68 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F47A624825B9EEE300ED2B68 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F47A624B25B9EEE300ED2B68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F47A624E25B9EEE300ED2B68 /* ToDude.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDude.xcdatamodel; sourceTree = "<group>"; };
 		F47A625025B9EEE500ED2B68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F47A625325B9EEE500ED2B68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F47A625525B9EEE500ED2B68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F47A625D25B9F0C300ED2B68 /* ItemListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,12 +60,12 @@
 			children = (
 				F47A624425B9EEE300ED2B68 /* AppDelegate.swift */,
 				F47A624625B9EEE300ED2B68 /* SceneDelegate.swift */,
-				F47A624825B9EEE300ED2B68 /* ViewController.swift */,
 				F47A624A25B9EEE300ED2B68 /* Main.storyboard */,
 				F47A625025B9EEE500ED2B68 /* Assets.xcassets */,
 				F47A625225B9EEE500ED2B68 /* LaunchScreen.storyboard */,
 				F47A625525B9EEE500ED2B68 /* Info.plist */,
 				F47A624D25B9EEE300ED2B68 /* ToDude.xcdatamodeld */,
+				F47A625D25B9F0C300ED2B68 /* ItemListTableViewController.swift */,
 			);
 			path = ToDude;
 			sourceTree = "<group>";
@@ -141,8 +141,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F47A624F25B9EEE300ED2B68 /* ToDude.xcdatamodeld in Sources */,
-				F47A624925B9EEE300ED2B68 /* ViewController.swift in Sources */,
 				F47A624525B9EEE300ED2B68 /* AppDelegate.swift in Sources */,
+				F47A625E25B9F0C300ED2B68 /* ItemListTableViewController.swift in Sources */,
 				F47A624725B9EEE300ED2B68 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

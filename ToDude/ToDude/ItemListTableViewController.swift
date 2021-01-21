@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import CoreData
 
 class ItemListTableViewController: UITableViewController {
 
+  var items = [Item]()
+  
     override func viewDidLoad() {
         super.viewDidLoad()
     }

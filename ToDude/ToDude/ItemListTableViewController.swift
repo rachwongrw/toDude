@@ -24,12 +24,12 @@ class ItemListTableViewController: UITableViewController {
     
     let alertAction = UIAlertAction(title: "Done", style: .default) { (_) in
       let newItem = Item(context: self.context)
-      if let text = tempTextField.text {
+      if let text = tempTextField.text, text != "" {
         newItem.title = text
         newItem.completed = false
         
         self.items.append(newItem)
-        self.saveiTems()
+        self.saveItems()
       }
     }
     
@@ -45,6 +45,7 @@ class ItemListTableViewController: UITableViewController {
   
   override func viewDidLoad() {
         super.viewDidLoad()
+      loadItems()
     }
 
     // MARK: - Table view data source
@@ -65,12 +66,16 @@ class ItemListTableViewController: UITableViewController {
         return cell
     }
   
-  func saveiTems() {
+  func saveItems() {
     do {
       try context.save()
     } catch {
       print("Error saving items")
     }
     tableView.reloadData()
+  }
+  
+  func loadItems() {
+    let request = NSFetchRequest<Item>
   }
 }

@@ -16,6 +16,7 @@
 		F47A625425B9EEE500ED2B68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F47A625225B9EEE500ED2B68 /* LaunchScreen.storyboard */; };
 		F47A625E25B9F0C300ED2B68 /* ItemListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47A625D25B9F0C300ED2B68 /* ItemListTableViewController.swift */; };
 		F48E14B325BA34AE0045C4FE /* ItemListExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E14B225BA34AE0045C4FE /* ItemListExtension.swift */; };
+		F48E14B625BA43DF0045C4FE /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E14B525BA43DF0045C4FE /* CategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		F47A625525B9EEE500ED2B68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F47A625D25B9F0C300ED2B68 /* ItemListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListTableViewController.swift; sourceTree = "<group>"; };
 		F48E14B225BA34AE0045C4FE /* ItemListExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListExtension.swift; sourceTree = "<group>"; };
+		F48E14B525BA43DF0045C4FE /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				F47A624D25B9EEE300ED2B68 /* ToDude.xcdatamodeld */,
 				F47A625D25B9F0C300ED2B68 /* ItemListTableViewController.swift */,
 				F48E14B225BA34AE0045C4FE /* ItemListExtension.swift */,
+				F48E14B525BA43DF0045C4FE /* CategoryViewController.swift */,
 			);
 			path = ToDude;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				F47A624525B9EEE300ED2B68 /* AppDelegate.swift in Sources */,
 				F48E14B325BA34AE0045C4FE /* ItemListExtension.swift in Sources */,
 				F47A625E25B9F0C300ED2B68 /* ItemListTableViewController.swift in Sources */,
+				F48E14B625BA43DF0045C4FE /* CategoryViewController.swift in Sources */,
 				F47A624725B9EEE300ED2B68 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

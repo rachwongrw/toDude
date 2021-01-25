@@ -13,7 +13,15 @@ class ItemListTableViewController: UITableViewController {
   
   let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
   var items = [Item]()
+ 
+  var category: Category?
   
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    loadItems(search: nil)
+    tableView.rowHeight = 85.0
+    self.title = category?.name
+  }
  
   @IBAction func addBtnTapped(_ sender: UIBarButtonItem) {
     let alertController = UIAlertController(
@@ -29,6 +37,7 @@ class ItemListTableViewController: UITableViewController {
       if let text = tempTextField.text, text != "" {
         newItem.title = text
         newItem.completed = false
+        newItem.category = self.category
         
         self.items.append(newItem)
         self.saveItems()
@@ -44,12 +53,7 @@ class ItemListTableViewController: UITableViewController {
     
     present(alertController, animated: true, completion: nil)
   }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    loadItems(search: nil)
-    tableView.rowHeight = 85.0
-  }
+
 
     // MARK: - Table view data source
 
@@ -77,13 +81,18 @@ class ItemListTableViewController: UITableViewController {
   // ------ READ ------
   func loadItems(search: String?) {
     let request: NSFetchRequest<Item> = Item.fetchRequest()
+    let predicate: NSCompoundPredicate
+    let categoryPredicate = NSPredicate(format: "category.name MATCHES %@", category?.name ?? "") // passing default value of "" if category name does not exist
     if let searchText = search {
-      let predicate = NSPredicate(format: "title CONTAINS[c] %@", searchText)
-      request.predicate = predicate
+      let searchPredicate = NSPredicate(format: "title CONTAINS[c] %@", searchText)
+      predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, searchPredicate])
       let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
       request.sortDescriptors = [sortDescriptor]
+    } else {
+      predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate])
     }
  
+    request.predicate = predicate
     
     do {
       items = try context.fetch(request)
@@ -93,7 +102,6 @@ class ItemListTableViewController: UITableViewController {
     tableView.reloadData()
   }
   
- 
 }
 
 extension ItemListTableViewController: UISearchBarDelegate {

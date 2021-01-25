@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 import SwipeCellKit
 
-class CategoryViewController: UITableViewController {
+class CategoryViewController: UITableViewController, SwipeTableViewCellDelegate {
   
   let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
   var categories = [Category]()
@@ -56,7 +56,22 @@ class CategoryViewController: UITableViewController {
       return categories.count
     }
 
-
+  func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+    guard orientation  == .right else {
+      return nil
+    }
+    
+    let deleteAction = SwipeAction(style: .destructive, title: "Delete") { (_, indexPath) in
+      self.context.delete(self.categories[indexPath.row])
+      self.categories.remove(at: indexPath.row)
+      self.saveCategories()
+    }
+    // add delete img to action
+    deleteAction.image = UIImage(named: "trash")
+    
+    return [deleteAction]
+  }
+  
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! SwipeTableViewCell
       cell.delegate = self
@@ -97,22 +112,4 @@ class CategoryViewController: UITableViewController {
     tableView.reloadData()
   }
   
-  
-  extension CategoryViewController: SwipeTableViewCellDelegate {
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-      guard orientation  == .right else {
-        return nil
-      }
-      
-      let deleteAction = SwipeAction(style: .destructive, title: "Delete") { (_, indexPath) in
-        self.context.delete(self.categories[indexPath.row])
-        self.categories.remove(at: indexPath.row)
-        self.saveCategories()
-      }
-      // add delete img to action
-      deleteAction.image = UIImage(named: "trash")
-      
-      return [deleteAction]
-    }
-  }
 }
